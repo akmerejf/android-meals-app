@@ -1,6 +1,5 @@
-package com.project.mealapp.ui.home
+package com.project.mealapp.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
@@ -13,13 +12,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.project.mealapp.R
-import com.project.mealapp.ui.meals.MealCategoriesActivity
-import com.project.mealapp.ui.meals.MealsFormActivity
-import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private val TAG_FLUTTER_FRAGMENT = "meals-categories-fragment"
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,42 +37,12 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView.setNavigationItemSelectedListener {
-            if (it.itemId == R.id.nav_meals_form) {
-                startActivity(
-                    FlutterActivity.withCachedEngine("meal-form-feature")
-                        .build(this)
-//                    Intent(this, MealsFormActivity::class.java)
-                )
-            }
-            if (it.itemId == R.id.nav_meals) {
-//                val fragmentManager: FragmentManager = supportFragmentManager
-//
-//                // Attempt to find an existing FlutterFragment, in case this is not the
-//                // first time that onCreate() was run.
-//                var flutterFragment = fragmentManager
-//                    .findFragmentByTag(TAG_FLUTTER_FRAGMENT) as FlutterFragment?
-//
-//                // Create a FlutterFragment if one does not exist.
-//                if (flutterFragment == null) {
-//                    flutterFragment = FlutterFragment.createDefault()
-//                }
-//
-//                fragmentManager
-//                    .beginTransaction()
-//                    .add(
-//                        R.id.nav_host_fragment,
-//                        flutterFragment,
-//                        TAG_FLUTTER_FRAGMENT
-//                    )
-//                    .commit()
-                val activity: FlutterActivity = MealCategoriesActivity()
 
-                startActivity(
-                    FlutterActivity.withCachedEngine("meal-categories-feature")
-                        .build(this)
-//                    Intent(this, MealCategoriesActivity::class.java)
-                )
+            if (it.itemId == R.id.nav_meals) {
+                //TODO add flutterview
             }
+
+            //TODO add method channel
 
             return@setNavigationItemSelectedListener super.onSupportNavigateUp()
         }
