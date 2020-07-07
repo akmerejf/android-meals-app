@@ -6,8 +6,8 @@ canais de comunicação entre App nativo e o [módulo Flutter](https://github.co
 Primeiro siga o passo a passo descrito no repositório do módulo flutter acima
 para gerar o arquivo `aar` e integrar no App Android
 
-## [Adicionando uma flutter view](https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen)
-## [Adicionando canais e métodos de comunicação entre o módulo flutter e o app nativo](https://flutter.dev/docs/development/platform-integration/platform-channels)
+* [Adicionando uma flutter view](https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen)
+* [Adicionando canais e métodos de comunicação entre o módulo flutter e o app nativo](https://flutter.dev/docs/development/platform-integration/platform-channels)
 
 ## Visão arquitetural
 
