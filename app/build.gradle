@@ -45,7 +45,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
 
-    debugImplementation 'com.example.meals_feature:flutter_debug:1.0'
+    debugImplementation 'com.example.meal_categories:flutter_debug:1.0'
     releaseImplementation 'com.example.meals_feature:flutter_release:1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

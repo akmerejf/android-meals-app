@@ -2,6 +2,7 @@ package com.project.mealapp.ui
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -12,6 +13,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.project.mealapp.R
+import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.engine.FlutterEngineCache
+import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,12 +41,22 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView.setNavigationItemSelectedListener {
+            val flutterEngine = FlutterEngineCache.getInstance().get("meals-module")
 
             if (it.itemId == R.id.nav_meals) {
-                //TODO add flutterview
+                startActivity(FlutterActivity.withCachedEngine("meals-module").build(this))
             }
-
-            //TODO add method channel
+            val methodChannel = MethodChannel(flutterEngine?.dartExecutor, "meals.channel")
+            methodChannel.setMethodCallHandler { call, result ->
+                if(call.method == "meals.channel/fromFlutter"){
+//                    val args: Map<String, Any>? = call.argument<Map<String, Int>>("args")
+                    Toast.makeText(this, "${call.arguments}", Toast.LENGTH_SHORT).show()
+                    result.success( mapOf<String, String>())
+                     methodChannel.invokeMethod("meals.channel/fromNative", "Hello from Android")
+                }else{
+                    result.notImplemented()
+                }
+            }
 
             return@setNavigationItemSelectedListener super.onSupportNavigateUp()
         }
